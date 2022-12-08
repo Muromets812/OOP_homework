@@ -100,7 +100,7 @@ class Lecturer(Mentor):
 
     def __str__(self):
         middle = Student.average(self, self.grades)
-        res = f"Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за домашние задания: {round(middle, 1)}\n"
+        res = f"Имя: {self.name}\nФамилия: {self.surname}\nСредний рейтинг лектора: {round(middle, 1)}\n"
         return res
 
     def __lt__(self, other):
@@ -125,36 +125,36 @@ class Reviewer(Mentor):
 
 
 best_student = Student('Ruoy', 'Eman', 'your_gender')
-best_student.courses_in_progress += ['Python']
+luser_student = Student('Ruoy2', 'Eman2', 'your_gender')
+best_reviewer = Reviewer('Some', 'One')
+luser_reviewer = Reviewer('Some2', 'One2')
+best_lecturer = Lecturer('Some', 'Buddy')
+luser_lecturer = Lecturer('Some2', 'Buddy2')
+best_mentor = Mentor('No', 'Buddy')
+luser_mentor = Mentor('No2', 'Buddy2')
 
-luser_student = Student('Test', 'Test', 'your_gender')
+best_student.courses_in_progress += ['Python']
 luser_student.courses_in_progress += ['Python']
 
-best_reviewer = Reviewer('Some', 'One')
 best_reviewer.rate_hw(best_student, 'Python', 10)
 best_reviewer.rate_hw(best_student, 'Python', 10)
 best_reviewer.rate_hw(luser_student, 'Python', 5)
 best_reviewer.rate_hw(luser_student, 'Python', 5)
 
-best_lecturer = Lecturer('Some', 'Buddy')
+
 best_lecturer.courses_attached += ['Python']
-
-luser_lecturer = Lecturer('test', 'test')
 luser_lecturer.courses_attached += ['Python']
 
-
-best_student.rate_courses(best_lecturer, 'Python', 10)
 best_student.rate_courses(best_lecturer, 'Python', 10)
 best_student.rate_courses(best_lecturer, 'Python', 10)
 
 best_student.rate_courses(luser_lecturer, 'Python', 7)
 best_student.rate_courses(luser_lecturer, 'Python', 7)
-best_student.rate_courses(luser_lecturer, 'Python', 7)
 
-print(luser_student)
+print(luser_lecturer)
 print(best_student)
 luser_student > best_student
-
+best_lecturer < luser_lecturer
 
 student_average(stud_list, "Java")
-lecturer_average(lect_list, "Paython")
+lecturer_average(lect_list, "Python")
